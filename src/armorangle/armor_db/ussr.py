@@ -30,8 +30,6 @@ ARMOR_DB = {
         safetyThreshold2=None
     ),
 
-    # mm/slope values hand-filled by the user directly - still TODO verify against Tankopedia / live test.
-    # Side armor is a single flat plate (no upper/lower split), so only one sidePlates entry (routes to the side_upper UI slot; side_lower stays hidden for this vehicle).
     'ussr:R72_T150': VehicleArmor(
         frontPlates=(
             [ArmorPlate(label='upper glacis', bearingDeg=0, slopeDeg=29, nominalMm=90)] +

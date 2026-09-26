@@ -28,10 +28,14 @@ ARMOR_DB = {
         safetyThreshold2=None
     ),
 
-    # armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.
     'germany:G136_Tiger_131': VehicleArmor(
-        frontPlates=[],
-        sidePlates=[],
+        frontPlates=(
+            [ArmorPlate(label='front', bearingDeg=0, slopeDeg=10, nominalMm=100)]
+        ),
+        sidePlates=(
+            mirroredPair(label='side upper', bearingDeg=90, slopeDeg=0, nominalMm=80) +
+            mirroredPair(label='side lower', bearingDeg=90, slopeDeg=0, nominalMm=60)
+        ),
         safetyThreshold1=None,
         safetyThreshold2=None
     ),
@@ -47,6 +51,14 @@ ARMOR_DB = {
             mirroredPair(label='side upper', bearingDeg=90, slopeDeg=25, nominalMm=80) +
             mirroredPair(label='side lower', bearingDeg=90, slopeDeg=0, nominalMm=80)
         ),
+        safetyThreshold1=None,
+        safetyThreshold2=None
+    ),
+
+    # armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.
+    'germany:G176_Jagdpanzer_E90': VehicleArmor(
+        frontPlates=[],
+        sidePlates=[],
         safetyThreshold1=None,
         safetyThreshold2=None
     ),

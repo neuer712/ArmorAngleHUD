@@ -60,11 +60,16 @@
             "sidePlates": []
         },
         "germany:G136_Tiger_131": {
-            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "notes": "",
             "safetyThreshold1": null,
             "safetyThreshold2": null,
-            "frontPlates": [],
-            "sidePlates": []
+            "frontPlates": [
+                {"label": "front", "bearingDeg": 0, "slopeDeg": 10, "nominalMm": 100, "mirror": false}
+            ],
+            "sidePlates": [
+                {"label": "side upper", "bearingDeg": 90, "slopeDeg": 0, "nominalMm": 80, "mirror": true},
+                {"label": "side lower", "bearingDeg": 90, "slopeDeg": 0, "nominalMm": 60, "mirror": true}
+            ]
         },
         "germany:G176_Jagdpanzer_E90": {
             "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
@@ -85,7 +90,7 @@
     },
     "ussr": {
         "ussr:R72_T150": {
-            "notes": "mm/slope values hand-filled by the user directly - still TODO verify against Tankopedia / live test.\nSide armor is a single flat plate (no upper/lower split), so only one sidePlates entry (routes to the side_upper UI slot; side_lower stays hidden for this vehicle).",
+            "notes": "",
             "safetyThreshold1": null,
             "safetyThreshold2": null,
             "frontPlates": [
