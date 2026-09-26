@@ -37,7 +37,14 @@ should substitute their own Python 2.7 install and WoT game directory.
   `armorangle.armor_db` directly (both 100% BigWorld-free by design), run with
   `C:\Python27\python.exe`. Everything else in this repo (`armor_angle_hud.py`, `hooks.py`) touches
   `BigWorld`/`GUI`/`VehicleGunRotator`/`game` and CANNOT be unit tested here - only verified by
-  building, deploying, and having the user test in a training room and read back `python.log`.
+  building, deploying, and having the user test in a training room and read back the game's log.
+- **On this machine's client (2.4.0.1), Python's `logging` output does NOT go to `python.log`
+  anymore - it goes into `game.log`** (tagged `[SCRIPT]`), confirmed 2026-09-26 by noticing
+  `python.log`'s mtime was stuck on 2026-08-29 while `game.log` had the same day's full mod
+  init/tick/whitelist-miss lines (`[gui.mods.mod_armoranglehud]`, `[armorangle.config]`,
+  `[armorangle.armor_angle_hud]`). Don't assume "no new lines in python.log" means the mod isn't
+  running - check `game.log` first. `scan_played_vehicles.bat` already points at `game.log` for
+  this reason; a different WoT version might behave differently, verify before assuming either way.
 - **Gotcha inherited from the parent project**: `python -m py_compile` does NOT catch "non-ASCII
   character but no encoding declared" errors the way `import` does (Python 2 quirk). Never trust
   `py_compile` alone as a syntax gate for a file with non-ASCII content (e.g. the `# -*- coding:
@@ -71,10 +78,12 @@ in `armor_data/vehicles.json` while the mod is enabled) and adds any not-yet-lis
 for the log-line prefix (`[ArmorAngleHUD]` here, was `[ArmorAngle]` there) and the
 `armor_db/__init__.py` path it parses to detect not-yet-wired nations.
 
-Usage: `C:\Python27\python.exe scan_played_vehicles.py <path-to-python.log>`, or set
-`WOT_PYTHON_LOG` and run with no args. `scan_played_vehicles.bat` is the personal, gitignored
-wrapper hardcoding this machine's log path (mirrors `build_and_deploy.bat`'s convention) - not
-tracked, recreate it per-machine if missing.
+Usage: `C:\Python27\python.exe scan_played_vehicles.py <path-to-log>`, or set `WOT_PYTHON_LOG` and
+run with no args. **On this machine, point it at `game.log`, not `python.log`** (see the log-location
+Environment fact above) - `scan_played_vehicles.bat` already does. That `.bat` is the personal,
+gitignored wrapper hardcoding this machine's log path (mirrors `build_and_deploy.bat`'s convention) -
+not tracked, recreate it per-machine if missing. Already used once live on 2026-09-26: correctly
+picked up `germany:G176_Jagdpanzer_E90` from `game.log` and added it as an empty placeholder entry.
 
 ## Data model (armor_data/*.json -> generated Python)
 
@@ -120,7 +129,8 @@ explanation forward):
   hotkey.
 - `mod_ArmorAngleHUD.py` - minimal `init()`/`fini()` entry point. **Deliberately does NOT** show an
   in-game error dialog on failure (that required `BWUtil`/`DialogsInterface`/`realm` - out of scope
-  for "only armor calculation and display"); failures only surface in `python.log`.
+  for "only armor calculation and display"); failures only surface in the game's script log
+  (`python.log`, or `game.log` - see Environment facts above).
 
 ## Deliberately NOT included (compared to the parent project)
 
@@ -132,7 +142,7 @@ explanation forward):
 - No config version-migration framework - if the config schema changes in a breaking way, decide at
   that time whether a migration path is actually needed (probably not, given how few settings exist)
   or if a "reset to new defaults" note is good enough.
-- No in-game error dialog on init failure - `python.log` only.
+- No in-game error dialog on init failure - the game's script log only.
 - No multi-language translations (in-game HUD text is intentionally ASCII/English only anyway, same
   reasoning as the parent project: the target client is English even though the user communicates in
   Chinese).
@@ -142,19 +152,25 @@ explanation forward):
 - E-75's internal name and armor data (if present in `vehicles.json`) - never confirmed against a
   live client, inherited unverified from the parent project.
 - Whether `vehicleTypeDescriptor.type.level` really is the 1-10 tier - a one-time diagnostic log
-  line exists in `armor_angle_hud.py` (`vehicleTypeDescriptor.type.level = ...` in `python.log`).
+  line exists in `armor_angle_hud.py` (`vehicleTypeDescriptor.type.level = ...`, seen firing
+  correctly on 2026-09-26, e.g. `level = 6` for one battle - still not cross-checked against which
+  specific vehicle/tier that was, so treat the *mapping* as unconfirmed even though the line itself
+  fires).
 - Most tiers still have no color threshold values in `tier_thresholds.json`.
-- The standalone `config.py`/`hooks.py` written for this extraction have NOT yet been verified
-  live in-game (no BigWorld available in this dev environment) - only the pure `armor_math`/
-  `armor_db` logic and the `build_wotmod.py` zip output have been verified so far. Treat the
-  config-reload hotkey and the `VehicleGunRotator` hook wiring as unverified until the user reports
-  back from an actual training-room test with `python.log` in hand.
+- **Live-verified on 2026-09-26** (client 2.4.0.1, via `game.log`): mod package loads, `init()` runs,
+  `config.py` creates the default file and reloads it correctly (`enabled` flipping from `False` to
+  `True` across a restart was picked up), and the `VehicleGunRotator` hook in `hooks.py` fires (HUD
+  ticked, correctly identified an off-whitelist vehicle via `getVehicleArmor`). **Not yet
+  specifically isolated**: whether the CTRL+P hotkey path in `hooks.py` (as opposed to a full game
+  restart) actually triggers a live mid-session reload - the observed `enabled` flip could have come
+  from either. Confirm this distinctly next time before treating the hotkey as verified.
 
 ## Working style established in this project (keep doing this)
 
 - Before claiming anything works, actually verify it: compile with real Python 2.7, write a
   standalone import-based test script for anything BigWorld-free, and for anything touching
-  BigWorld, build and ask the user to test in-game and report back `python.log` output.
+  BigWorld, build and ask the user to test in-game and report back the game's script log output
+  (check both `python.log` and `game.log` - don't assume which one a given client version uses).
 - When something can't be verified in this environment, say so explicitly and give the user a
   concrete way to verify it live, rather than presenting a guess as fact.
 - Prefer asking a clarifying question over guessing when a design decision is genuinely the user's

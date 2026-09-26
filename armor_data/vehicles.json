@@ -65,6 +65,13 @@
             "safetyThreshold2": null,
             "frontPlates": [],
             "sidePlates": []
+        },
+        "germany:G176_Jagdpanzer_E90": {
+            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "safetyThreshold1": null,
+            "safetyThreshold2": null,
+            "frontPlates": [],
+            "sidePlates": []
         }
     },
     "france": {

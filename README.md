@@ -33,11 +33,15 @@ This is a rough approximation:
 
 - E-75's internal name and armor data have never been confirmed against a live client.
 - Whether `vehicleTypeDescriptor.type.level` really is the 1-10 tier is logged once per session
-  (`python.log`, search for `vehicleTypeDescriptor.type.level =`) but not independently confirmed.
+  (search the game's script log for `vehicleTypeDescriptor.type.level =`) but not independently
+  confirmed. Note: on some client versions this log line ends up in `python.log`, on others (seen on
+  client 2.4.0.1) Python logging goes into `game.log` instead - check both if one looks stale.
 - Most tiers have no color threshold values yet in `armor_data/tier_thresholds.json` (only tiers 7
   and 8 have real numbers) - other tiers always render the neutral/safe color.
-- Only German and Soviet heavies have been entered so far; the data model supports pike/wedge nose
-  armor (multiple front plates at nonzero bearing) but few vehicles using it have been added.
+- Only a modest whitelist of vehicles across a few nations has been entered so far (see
+  `armor_data/vehicles.json`); the data model supports pike/wedge nose armor (multiple front plates
+  at nonzero bearing) but few vehicles using it have been added. Use `scan_played_vehicles.py` to
+  find vehicles you've played that aren't listed yet (adds them as empty placeholders).
 
 ## Building
 
