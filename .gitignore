@@ -1,0 +1,10 @@
+/*.wotmod
+/*.zip
+/**/*.pyc
+/.idea
+
+# build_wotmod.py's output directory - regenerable, not source
+/build/
+
+# personal-use only (hardcoded to one machine's WoT install path)
+/build_and_deploy.bat
