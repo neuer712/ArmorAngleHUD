@@ -8,3 +8,4 @@
 
 # personal-use only (hardcoded to one machine's WoT install path)
 /build_and_deploy.bat
+/scan_played_vehicles.bat

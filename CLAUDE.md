@@ -60,6 +60,22 @@ should substitute their own Python 2.7 install and WoT game directory.
   translations, no Mod Configurator page - see "Deliberately NOT included" below).
 - Nothing in this repo gets committed automatically - only commit when explicitly asked.
 
+## Discovering new vehicles
+
+`scan_played_vehicles.py` (tracked, generic, no machine-specific paths) scans one or more
+`python.log` files for `[ArmorAngleHUD] vehicle not in whitelist: <internal name>` lines (logged
+once per battle by `armor_angle_hud.py._updateOnce` whenever the player's own vehicle isn't found
+in `armor_data/vehicles.json` while the mod is enabled) and adds any not-yet-listed vehicle to
+`vehicles.json` with empty placeholder armor data (safe - the HUD just shows nothing for it until
+`frontPlates`/`sidePlates` are filled in). Ported forward from the parent project unchanged except
+for the log-line prefix (`[ArmorAngleHUD]` here, was `[ArmorAngle]` there) and the
+`armor_db/__init__.py` path it parses to detect not-yet-wired nations.
+
+Usage: `C:\Python27\python.exe scan_played_vehicles.py <path-to-python.log>`, or set
+`WOT_PYTHON_LOG` and run with no args. `scan_played_vehicles.bat` is the personal, gitignored
+wrapper hardcoding this machine's log path (mirrors `build_and_deploy.bat`'s convention) - not
+tracked, recreate it per-machine if missing.
+
 ## Data model (armor_data/*.json -> generated Python)
 
 Same schema/conventions as the parent project (see that repo's `CLAUDE.md` for the full writeup if
