@@ -16,6 +16,14 @@ ARMOR_DB = {
     ),
 
     # armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.
+    'usa:A09_T1_hvy': VehicleArmor(
+        frontPlates=[],
+        sidePlates=[],
+        safetyThreshold1=None,
+        safetyThreshold2=None
+    ),
+
+    # armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.
     'usa:A129_T6_medium': VehicleArmor(
         frontPlates=[],
         sidePlates=[],

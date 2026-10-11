@@ -42,6 +42,14 @@ ARMOR_DB = {
         safetyThreshold2=None
     ),
 
+    # armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.
+    'ussr:R77_KV2': VehicleArmor(
+        frontPlates=[],
+        sidePlates=[],
+        safetyThreshold1=None,
+        safetyThreshold2=None
+    ),
+
     # Shape (bearingDeg/slopeDeg) copied from ussr:R72_T150 per the user - same hull layout, just
     # uniformly 75mm on every plate instead of T-150's 90mm. Still TODO verify against Tankopedia / live test.
     'ussr:R80_KV1': VehicleArmor(

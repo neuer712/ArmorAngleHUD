@@ -193,6 +193,37 @@ def assessVehicle(alphaSignedDeg, elevationSignedDeg, vehicleArmor):
     }
 
 
+# fallback bearing/slope used by assessGenericSideRicochet below for a
+# vehicle with no actual side plate data - just a flat, vertical generic
+# hull side, enough to tell whether the CURRENT aim angle would force an
+# AP ricochet off it or not. Forced ricochet only depends on angle, never
+# on thickness, so this needs no nominalMm at all.
+_GENERIC_SIDE_SLOPE_DEG = 0.0
+_GENERIC_SIDE_BEARINGS_DEG = {"left": -90.0, "right": 90.0}
+
+
+def assessGenericSideRicochet(alphaSignedDeg, elevationSignedDeg):
+    """
+    Fallback for a vehicle with no side armor data at all - either not in
+    the whitelist, or a whitelist entry whose sidePlates are still empty
+    placeholders. There's no real plate (bearing/slope/thickness) to show
+    a number for, but a forced AP ricochet only depends on the incidence
+    angle, so this can still tell the player "angled enough to force a
+    ricochet right now" using an assumed flat vertical side plate.
+
+    Returns {"left": bool_or_None, "right": bool_or_None} - True if that
+    side would force an AP ricochet at the current aim angle, False if it
+    wouldn't (caller should show nothing, not a number - there's no real
+    thickness to compute one from), None if that side faces away entirely
+    (also nothing to show).
+    """
+    result = {}
+    for sideKey, bearingDeg in _GENERIC_SIDE_BEARINGS_DEG.items():
+        incidenceDeg = plateIncidenceDeg(alphaSignedDeg, bearingDeg, _GENERIC_SIDE_SLOPE_DEG, elevationSignedDeg)
+        result[sideKey] = None if incidenceDeg is None else isForcedRicochet(incidenceDeg, isHeat=False)
+    return result
+
+
 ###########################################################
 # UI slot classification (armor_angle_hud.py's fixed grid layout).
 #

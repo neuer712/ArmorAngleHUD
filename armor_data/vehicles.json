@@ -77,10 +77,38 @@
             "safetyThreshold2": null,
             "frontPlates": [],
             "sidePlates": []
+        },
+        "germany:G165_Erich_Konzept_I": {
+            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "safetyThreshold1": null,
+            "safetyThreshold2": null,
+            "frontPlates": [],
+            "sidePlates": []
         }
     },
     "france": {
         "france:F137_LEOX": {
+            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "safetyThreshold1": null,
+            "safetyThreshold2": null,
+            "frontPlates": [],
+            "sidePlates": []
+        },
+        "france:F97_ELC_EVEN_90": {
+            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "safetyThreshold1": null,
+            "safetyThreshold2": null,
+            "frontPlates": [],
+            "sidePlates": []
+        },
+        "france:F62_ELC_AMX": {
+            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "safetyThreshold1": null,
+            "safetyThreshold2": null,
+            "frontPlates": [],
+            "sidePlates": []
+        },
+        "france:F85_M4A1_FL10": {
             "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
             "safetyThreshold1": null,
             "safetyThreshold2": null,
@@ -133,6 +161,13 @@
             "safetyThreshold2": null,
             "frontPlates": [],
             "sidePlates": []
+        },
+        "ussr:R77_KV2": {
+            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "safetyThreshold1": null,
+            "safetyThreshold2": null,
+            "frontPlates": [],
+            "sidePlates": []
         }
     },
     "uk": {
@@ -149,6 +184,19 @@
             "safetyThreshold2": null,
             "frontPlates": [],
             "sidePlates": []
+        },
+        "uk:GB130_FV225_Collector": {
+            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "safetyThreshold1": null,
+            "safetyThreshold2": null,
+            "frontPlates": [
+                {"label": "upper glacis", "bearingDeg": 0, "slopeDeg": 54, "nominalMm": 165, "mirror": false},
+                {"label": "lower glacis", "bearingDeg": 0, "slopeDeg": -33, "nominalMm": 172, "mirror": false},
+                {"label": "shoulder", "bearingDeg": 35, "slopeDeg": 35, "nominalMm": 190, "mirror": true}
+            ],
+            "sidePlates": [
+                {"label": "side", "bearingDeg": 90, "slopeDeg": 0, "nominalMm": 86, "mirror": true}
+            ]
         }
     },
     "usa": {
@@ -167,6 +215,31 @@
             "sidePlates": []
         },
         "usa:A129_T6_medium": {
+            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "safetyThreshold1": null,
+            "safetyThreshold2": null,
+            "frontPlates": [],
+            "sidePlates": []
+        },
+        "usa:A09_T1_hvy": {
+            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "safetyThreshold1": null,
+            "safetyThreshold2": null,
+            "frontPlates": [],
+            "sidePlates": []
+        }
+    },
+    "sweden": {
+        "sweden:S37_Ambassador": {
+            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "safetyThreshold1": null,
+            "safetyThreshold2": null,
+            "frontPlates": [],
+            "sidePlates": []
+        }
+    },
+    "china": {
+        "china:Ch40_WZ120G_FT": {
             "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
             "safetyThreshold1": null,
             "safetyThreshold2": null,

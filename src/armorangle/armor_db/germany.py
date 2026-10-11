@@ -40,6 +40,14 @@ ARMOR_DB = {
         safetyThreshold2=None
     ),
 
+    # armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.
+    'germany:G165_Erich_Konzept_I': VehicleArmor(
+        frontPlates=[],
+        sidePlates=[],
+        safetyThreshold1=None,
+        safetyThreshold2=None
+    ),
+
     # mm/slope values hand-filled by the user directly, then sign-corrected (lower glacis and
     # side lower flipped negative relative to upper) after a live elevation test - confirmed correct.
     'germany:G16_PzVIB_Tiger_II': VehicleArmor(

@@ -26,6 +26,15 @@ _COLOURS_BY_CATEGORY = {
     armor_math.COLOR_RICOCHET: _COLOUR_SAFE,
 }
 
+# maps the two UI_SLOTS that assessGenericSideRicochet's fallback can fill
+# in (see _updateOnce) to its "left"/"right" keys - only the upper side
+# slot, since there's just one assumed generic plate per side, not a
+# separate upper/lower pair
+_GENERIC_SIDE_SLOTS = {
+    "left_side_upper": "left",
+    "right_side_upper": "right",
+}
+
 # each slot in armor_math.UI_SLOTS is its OWN GUI.Text component at a FIXED
 # screen position - a slot with nothing to show is just hidden
 # (.visible = False), it never reflows or shifts other slots around.
@@ -173,11 +182,20 @@ class _ArmorAngleHud(object):
 
         vehicleName = vehicleTypeDescriptor.type.name
         armor = getVehicleArmor(vehicleName)
+
+        alphaSignedDeg = armor_math.normalizeYawSignedDeg(player.gunRotator.turretYaw)
+        elevationSignedDeg = armor_math.normalizeElevationSignedDeg(player.gunRotator.gunPitch)
+
         if armor is None:
+            # no armor data recorded for this vehicle at all - still show a
+            # bare "RICOCHET" on whichever side the current aim angle would
+            # force one, since that only depends on angle, never on the
+            # (unknown) real plate thickness; nothing otherwise.
             if vehicleName not in self._loggedMissingVehicleNames:
                 self._loggedMissingVehicleNames.add(vehicleName)
                 logger.info("[ArmorAngleHUD] vehicle not in whitelist: %s", vehicleName)
-            self._hideAll()
+            genericSideRicochet = armor_math.assessGenericSideRicochet(alphaSignedDeg, elevationSignedDeg)
+            self._renderSlots({}, genericSideRicochet, None, None, g_config.debugMode)
             return
 
         tier = getattr(vehicleTypeDescriptor.type, "level", None)
@@ -185,8 +203,6 @@ class _ArmorAngleHud(object):
             self._loggedTierValue = True
             logger.info("[ArmorAngleHUD] vehicleTypeDescriptor.type.level = %r (verify this is the tier 1-10)", tier)
 
-        alphaSignedDeg = armor_math.normalizeYawSignedDeg(player.gunRotator.turretYaw)
-        elevationSignedDeg = armor_math.normalizeElevationSignedDeg(player.gunRotator.gunPitch)
         vehicleAssessment = armor_math.assessVehicle(alphaSignedDeg, elevationSignedDeg, armor)
 
         bySlot = {}
@@ -195,22 +211,38 @@ class _ArmorAngleHud(object):
         for assessment in vehicleAssessment["side"]:
             bySlot[armor_math.classifySidePlate(assessment.plate)] = assessment
 
+        # whitelisted vehicle, but sidePlates is still an empty placeholder
+        # (see armor_data/vehicles.json) - same ricochet-only fallback as
+        # an unlisted vehicle, just for the side slots.
+        genericSideRicochet = None
+        if not armor.sidePlates:
+            genericSideRicochet = armor_math.assessGenericSideRicochet(alphaSignedDeg, elevationSignedDeg)
+
         debugMode = g_config.debugMode
         threshold1, threshold2 = armor_math.resolveSafetyThresholds(armor, tier, TIER_SAFETY_THRESHOLDS)
 
+        self._renderSlots(bySlot, genericSideRicochet, threshold1, threshold2, debugMode)
+
+    def _renderSlots(self, bySlot, genericSideRicochet, threshold1, threshold2, debugMode):
         for slotKey, _col, _row in armor_math.UI_SLOTS:
             text = self._textComponents[slotKey]
             assessment = bySlot.get(slotKey)
 
-            if assessment is None:
-                text.visible = False
+            if assessment is not None:
+                category = armor_math.colorCategoryForAssessment(assessment, threshold1, threshold2)
+                text.colour = _COLOURS_BY_CATEGORY.get(category, _NEUTRAL_COLOUR)
+                text.text = _formatPlateText(assessment, debugMode)
+                text.visible = True
                 continue
 
-            category = armor_math.colorCategoryForAssessment(assessment, threshold1, threshold2)
+            sideKey = _GENERIC_SIDE_SLOTS.get(slotKey)
+            if genericSideRicochet is not None and sideKey is not None and genericSideRicochet.get(sideKey):
+                text.colour = _COLOURS_BY_CATEGORY[armor_math.COLOR_RICOCHET]
+                text.text = "RICOCHET"
+                text.visible = True
+                continue
 
-            text.colour = _COLOURS_BY_CATEGORY.get(category, _NEUTRAL_COLOUR)
-            text.text = _formatPlateText(assessment, debugMode)
-            text.visible = True
+            text.visible = False
 
 
 def _formatPlateText(assessment, debugMode):

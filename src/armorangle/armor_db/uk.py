@@ -16,6 +16,20 @@ ARMOR_DB = {
     ),
 
     # armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.
+    'uk:GB130_FV225_Collector': VehicleArmor(
+        frontPlates=(
+            [ArmorPlate(label='upper glacis', bearingDeg=0, slopeDeg=54, nominalMm=165)] +
+            [ArmorPlate(label='lower glacis', bearingDeg=0, slopeDeg=-33, nominalMm=172)] +
+            mirroredPair(label='shoulder', bearingDeg=35, slopeDeg=35, nominalMm=190)
+        ),
+        sidePlates=(
+            mirroredPair(label='side', bearingDeg=90, slopeDeg=0, nominalMm=86)
+        ),
+        safetyThreshold1=None,
+        safetyThreshold2=None
+    ),
+
+    # armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.
     'uk:GB99_Turtle_Mk1': VehicleArmor(
         frontPlates=[],
         sidePlates=[],
