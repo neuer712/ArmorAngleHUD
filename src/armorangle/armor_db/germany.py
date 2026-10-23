@@ -64,6 +64,20 @@ ARMOR_DB = {
     ),
 
     # armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.
+    'germany:G172_PzVIB_Tiger_II_DIT': VehicleArmor(
+        frontPlates=(
+            [ArmorPlate(label='upper glacis', bearingDeg=0, slopeDeg=50, nominalMm=150)] +
+            [ArmorPlate(label='lower glacis', bearingDeg=0, slopeDeg=-50, nominalMm=100)]
+        ),
+        sidePlates=(
+            mirroredPair(label='side upper', bearingDeg=90, slopeDeg=25, nominalMm=80) +
+            mirroredPair(label='side lower', bearingDeg=90, slopeDeg=0, nominalMm=80)
+        ),
+        safetyThreshold1=None,
+        safetyThreshold2=None
+    ),
+
+    # armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.
     'germany:G176_Jagdpanzer_E90': VehicleArmor(
         frontPlates=[],
         sidePlates=[],
@@ -87,6 +101,22 @@ ARMOR_DB = {
     ),
 
     # armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.
+    'germany:G191_StuG_IIIF_CFE_A': VehicleArmor(
+        frontPlates=[],
+        sidePlates=[],
+        safetyThreshold1=None,
+        safetyThreshold2=None
+    ),
+
+    # armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.
+    'germany:G204_PzVI_Tiger_P_CFE_A': VehicleArmor(
+        frontPlates=[],
+        sidePlates=[],
+        safetyThreshold1=None,
+        safetyThreshold2=None
+    ),
+
+    # armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.
     'germany:G43_Sturer_Emil': VehicleArmor(
         frontPlates=[],
         sidePlates=[],
@@ -96,6 +126,14 @@ ARMOR_DB = {
 
     # armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.
     'germany:G63_PzI_ausf_C': VehicleArmor(
+        frontPlates=[],
+        sidePlates=[],
+        safetyThreshold1=None,
+        safetyThreshold2=None
+    ),
+
+    # armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.
+    'germany:G81_Pz_IV_AusfH_GuP': VehicleArmor(
         frontPlates=[],
         sidePlates=[],
         safetyThreshold1=None,

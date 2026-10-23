@@ -84,6 +84,40 @@
             "safetyThreshold2": null,
             "frontPlates": [],
             "sidePlates": []
+        },
+        "germany:G204_PzVI_Tiger_P_CFE_A": {
+            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "safetyThreshold1": null,
+            "safetyThreshold2": null,
+            "frontPlates": [],
+            "sidePlates": []
+        },
+        "germany:G172_PzVIB_Tiger_II_DIT": {
+            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "safetyThreshold1": null,
+            "safetyThreshold2": null,
+            "frontPlates": [
+                {"label": "upper glacis", "bearingDeg": 0, "slopeDeg": 50, "nominalMm": 150, "mirror": false},
+                {"label": "lower glacis", "bearingDeg": 0, "slopeDeg": -50, "nominalMm": 100, "mirror": false}
+            ],
+            "sidePlates": [
+                {"label": "side upper", "bearingDeg": 90, "slopeDeg": 25, "nominalMm": 80, "mirror": true},
+                {"label": "side lower", "bearingDeg": 90, "slopeDeg": 0, "nominalMm": 80, "mirror": true}
+            ]
+        },
+        "germany:G191_StuG_IIIF_CFE_A": {
+            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "safetyThreshold1": null,
+            "safetyThreshold2": null,
+            "frontPlates": [],
+            "sidePlates": []
+        },
+        "germany:G81_Pz_IV_AusfH_GuP": {
+            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "safetyThreshold1": null,
+            "safetyThreshold2": null,
+            "frontPlates": [],
+            "sidePlates": []
         }
     },
     "france": {
@@ -197,6 +231,20 @@
             "sidePlates": [
                 {"label": "side", "bearingDeg": 90, "slopeDeg": 0, "nominalMm": 86, "mirror": true}
             ]
+        },
+        "uk:GB150_Churchill_VII_A": {
+            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "safetyThreshold1": null,
+            "safetyThreshold2": null,
+            "frontPlates": [],
+            "sidePlates": []
+        },
+        "uk:GB71_AT_15A": {
+            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "safetyThreshold1": null,
+            "safetyThreshold2": null,
+            "frontPlates": [],
+            "sidePlates": []
         }
     },
     "usa": {
@@ -227,6 +275,25 @@
             "safetyThreshold2": null,
             "frontPlates": [],
             "sidePlates": []
+        },
+        "usa:A10_M6": {
+            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "safetyThreshold1": null,
+            "safetyThreshold2": null,
+            "frontPlates": [],
+            "sidePlates": []
+        },
+        "usa:A11_T29": {
+            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "safetyThreshold1": null,
+            "safetyThreshold2": null,
+            "frontPlates": [
+                {"label": "upper glacis", "bearingDeg": 0, "slopeDeg": 53, "nominalMm": 102, "mirror": false},
+                {"label": "lower glacis", "bearingDeg": 0, "slopeDeg": -57, "nominalMm": 70, "mirror": false}
+            ],
+            "sidePlates": [
+                {"label": "side", "bearingDeg": 90, "slopeDeg": 0, "nominalMm": 76, "mirror": true}
+            ]
         }
     },
     "sweden": {

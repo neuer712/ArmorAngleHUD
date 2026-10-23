@@ -24,6 +24,27 @@ ARMOR_DB = {
     ),
 
     # armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.
+    'usa:A10_M6': VehicleArmor(
+        frontPlates=[],
+        sidePlates=[],
+        safetyThreshold1=None,
+        safetyThreshold2=None
+    ),
+
+    # armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.
+    'usa:A11_T29': VehicleArmor(
+        frontPlates=(
+            [ArmorPlate(label='upper glacis', bearingDeg=0, slopeDeg=53, nominalMm=102)] +
+            [ArmorPlate(label='lower glacis', bearingDeg=0, slopeDeg=-57, nominalMm=70)]
+        ),
+        sidePlates=(
+            mirroredPair(label='side', bearingDeg=90, slopeDeg=0, nominalMm=76)
+        ),
+        safetyThreshold1=None,
+        safetyThreshold2=None
+    ),
+
+    # armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.
     'usa:A129_T6_medium': VehicleArmor(
         frontPlates=[],
         sidePlates=[],
