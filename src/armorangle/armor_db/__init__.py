@@ -74,8 +74,11 @@ def mirroredPair(label, bearingDeg, slopeDeg, nominalMm):
 
 
 _NATION_MODULES = {
+    "china": "armorangle.armor_db.china",
     "france": "armorangle.armor_db.france",
     "germany": "armorangle.armor_db.germany",
+    "japan": "armorangle.armor_db.japan",
+    "sweden": "armorangle.armor_db.sweden",
     "uk": "armorangle.armor_db.uk",
     "usa": "armorangle.armor_db.usa",
     "ussr": "armorangle.armor_db.ussr"

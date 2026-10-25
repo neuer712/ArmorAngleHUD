@@ -78,6 +78,14 @@ ARMOR_DB = {
     ),
 
     # armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.
+    'germany:G173_BT42_DIT': VehicleArmor(
+        frontPlates=[],
+        sidePlates=[],
+        safetyThreshold1=None,
+        safetyThreshold2=None
+    ),
+
+    # armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.
     'germany:G176_Jagdpanzer_E90': VehicleArmor(
         frontPlates=[],
         sidePlates=[],
@@ -102,6 +110,14 @@ ARMOR_DB = {
 
     # armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.
     'germany:G191_StuG_IIIF_CFE_A': VehicleArmor(
+        frontPlates=[],
+        sidePlates=[],
+        safetyThreshold1=None,
+        safetyThreshold2=None
+    ),
+
+    # armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.
+    'germany:G193_Pz_Kpfw_55': VehicleArmor(
         frontPlates=[],
         sidePlates=[],
         safetyThreshold1=None,

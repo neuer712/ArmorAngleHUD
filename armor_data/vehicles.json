@@ -118,6 +118,20 @@
             "safetyThreshold2": null,
             "frontPlates": [],
             "sidePlates": []
+        },
+        "germany:G193_Pz_Kpfw_55": {
+            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "safetyThreshold1": null,
+            "safetyThreshold2": null,
+            "frontPlates": [],
+            "sidePlates": []
+        },
+        "germany:G173_BT42_DIT": {
+            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "safetyThreshold1": null,
+            "safetyThreshold2": null,
+            "frontPlates": [],
+            "sidePlates": []
         }
     },
     "france": {
@@ -303,10 +317,26 @@
             "safetyThreshold2": null,
             "frontPlates": [],
             "sidePlates": []
+        },
+        "sweden:S31_Strv_K": {
+            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "safetyThreshold1": null,
+            "safetyThreshold2": null,
+            "frontPlates": [],
+            "sidePlates": []
         }
     },
     "china": {
         "china:Ch40_WZ120G_FT": {
+            "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
+            "safetyThreshold1": null,
+            "safetyThreshold2": null,
+            "frontPlates": [],
+            "sidePlates": []
+        }
+    },
+    "japan": {
+        "japan:J48_Saryuda": {
             "notes": "armor data not filled in yet, HUD shows nothing for this vehicle until frontPlates/sidePlates are filled in and generate_armor_db.py is re-run.",
             "safetyThreshold1": null,
             "safetyThreshold2": null,
